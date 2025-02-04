@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3sxw28ls5s5r"]
+
+[ext_resource type="Script" path="res://Player/Character/Scripts/main_character.gd" id="1_4j40p"]
+[ext_resource type="Texture2D" uid="uid://dfhwbcc1xgo68" path="res://Player/Character/Assets/Player.png" id="2_m7ebh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkikd"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnkkc"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_4j40p")
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(-1, -8)
+texture = ExtResource("2_m7ebh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -8)
+shape = SubResource("RectangleShape2D_bkikd")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1, -8)
+shape = SubResource("RectangleShape2D_dnkkc")
+debug_color = Color(0.995776, 0, 0.199186, 0.42)
+
+[node name="Fireball" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Fireball"]
+unique_name_in_owner = true
+position = Vector2(11, -8)
