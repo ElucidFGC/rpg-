@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var spawn_offset = Vector2(30, 0)  # Adjust this value to control where the fireball spawns relative to the enemy
+@export var spawn_offset = Vector2(16, 0)  # Adjust this value to control where the fireball spawns relative to the enemy
 @export var velocity = Vector2.ZERO  # Add a velocity to make the fireball move
 
 func _ready():
