@@ -33,7 +33,7 @@ func _physics_process(delta):
 			random_timer = random_change_interval  # Reset timer
 
 		# Blend random movement and tracking player movement
-		var final_direction = (direction_to_player * 0.7 + random_direction * 0.3).normalized()
+		var final_direction = (direction_to_player * 0.55 + random_direction * 0.45).normalized()
 
 		# Restrict movement to cardinal directions (UP, DOWN, LEFT, RIGHT)
 		change_direction(final_direction)
