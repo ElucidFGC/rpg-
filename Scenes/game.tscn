@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://jpi8qvdf3ky0"]
 
-[ext_resource type="Script" path="res://Scenes/game.gd" id="1_4hx5y"]
+[ext_resource type="Script" path="res://Scenes/Scripts/game.gd" id="1_4hx5y"]
 [ext_resource type="Texture2D" uid="uid://ccxto87cdyhch" path="res://Background/Tilemap/Tilemap.png" id="1_574ri"]
 [ext_resource type="PackedScene" uid="uid://d3sxw28ls5s5r" path="res://Scenes/player.tscn" id="2_nahi7"]
 [ext_resource type="PackedScene" uid="uid://cibwv7e3b5f07" path="res://Scenes/enemy.tscn" id="3_x50u0"]

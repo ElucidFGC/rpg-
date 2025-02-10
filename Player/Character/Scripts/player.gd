@@ -11,8 +11,6 @@ const SHOOT_COOLDOWN = 0.5  # Cooldown period (in seconds)
 var last_direction = Vector2.RIGHT  # Default direction
 var can_shoot = true
 
-
-	
 func _physics_process(delta):
 	var input_dir = Vector2.ZERO  
 

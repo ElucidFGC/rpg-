@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cibwv7e3b5f07"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_maqxs"]
+[ext_resource type="Script" path="res://Enemies/Scripts/enemy.gd" id="1_maqxs"]
 [ext_resource type="Texture2D" uid="uid://ropfrnh51dmq" path="res://Enemies/Basic Enemy/Enemy.png" id="2_87kek"]
 [ext_resource type="PackedScene" uid="uid://frmd5jobuect" path="res://Scenes/attack.tscn" id="3_3ptvm"]
 
