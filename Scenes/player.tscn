@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3sxw28ls5s5r"]
 
-[ext_resource type="Script" path="res://Player/Character/Scripts/main_character.gd" id="1_4j40p"]
+[ext_resource type="Script" path="res://Player/Character/Scripts/player.gd" id="1_4j40p"]
 [ext_resource type="Texture2D" uid="uid://dfhwbcc1xgo68" path="res://Player/Character/Assets/Player.png" id="2_m7ebh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkikd"]
@@ -33,3 +33,5 @@ debug_color = Color(0.995776, 0, 0.199186, 0.42)
 [node name="Marker2D" type="Marker2D" parent="Fireball"]
 unique_name_in_owner = true
 position = Vector2(11, -8)
+
+[connection signal="health_depleted" from="." to="." method="_on_health_depleted"]

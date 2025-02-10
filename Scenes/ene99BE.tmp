@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cibwv7e3b5f07"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_maqxs"]
+[ext_resource type="Texture2D" uid="uid://ropfrnh51dmq" path="res://Enemies/Basic Enemy/Enemy.png" id="2_87kek"]
+[ext_resource type="PackedScene" uid="uid://frmd5jobuect" path="res://Scenes/attack.tscn" id="3_3ptvm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf4fg"]
+size = Vector2(16, 16)
+
+[node name="Enemy" type="CharacterBody2D"]
+visibility_layer = 3
+script = ExtResource("1_maqxs")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_87kek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_bf4fg")
+
+[node name="Attack" parent="." instance=ExtResource("3_3ptvm")]
+visible = false
+position = Vector2(20, 0)

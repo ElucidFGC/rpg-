@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://frmd5jobuect"]
+
+[ext_resource type="Texture2D" uid="uid://d3j3qnixyp5rw" path="res://Player/Spells/Attack.png" id="1_0v56r"]
+[ext_resource type="Script" path="res://attack.gd" id="1_kf0xx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iixxv"]
+size = Vector2(16, 16)
+
+[node name="Attack" type="Area2D"]
+light_mask = 0
+visibility_layer = 2
+script = ExtResource("1_kf0xx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_iixxv")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Attack" type="Sprite2D" parent="Marker2D"]
+position = Vector2(0, -8)
+texture = ExtResource("1_0v56r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://jpi8qvdf3ky0"]
+[gd_scene load_steps=6 format=4 uid="uid://jpi8qvdf3ky0"]
 
-[ext_resource type="Script" path="res://Scenes/game.gd" id="1_4hx5y"]
 [ext_resource type="Texture2D" uid="uid://ccxto87cdyhch" path="res://Background/Tilemap/Tilemap.png" id="1_574ri"]
-[ext_resource type="PackedScene" uid="uid://d3sxw28ls5s5r" path="res://Scenes/player.tscn" id="2_nahi7"]
+[ext_resource type="PackedScene" uid="uid://d3sxw28ls5s5r" path="res://Scenes/main_character.tscn" id="2_nahi7"]
 [ext_resource type="PackedScene" uid="uid://cibwv7e3b5f07" path="res://Scenes/enemy.tscn" id="3_x50u0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ime84"]
@@ -18,28 +17,15 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ime84")
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_4hx5y")
 
 [node name="Background" type="Node2D" parent="."]
 
-[node name="GameOver" type="CanvasLayer" parent="Background"]
-unique_name_in_owner = true
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="Background"]
 
-[node name="ColorRect" type="ColorRect" parent="Background/GameOver"]
+[node name="ColorRect" type="ColorRect" parent="Background/CanvasLayer"]
+visible = false
 offset_right = 1152.0
 offset_bottom = 651.0
-color = Color(1, 1, 1, 0.47451)
-
-[node name="Label" type="Label" parent="Background/GameOver/ColorRect"]
-layout_mode = 0
-offset_left = 176.0
-offset_top = 220.0
-offset_right = 990.0
-offset_bottom = 425.0
-theme_override_colors/font_color = Color(0.266575, 0.266575, 0.266575, 1)
-theme_override_font_sizes/font_size = 150
-text = "Game Over"
 
 [node name="Foreground" type="Node2D" parent="."]
 
@@ -51,17 +37,9 @@ tile_set = SubResource("TileSet_1ov86")
 
 [node name="Characters" type="Node2D" parent="Foreground"]
 
-[node name="Player" parent="Foreground/Characters" instance=ExtResource("2_nahi7")]
+[node name="Main_Character" parent="Foreground/Characters" instance=ExtResource("2_nahi7")]
+unique_name_in_owner = true
 position = Vector2(371, 348)
 
 [node name="Enemy" parent="Foreground/Characters" instance=ExtResource("3_x50u0")]
 position = Vector2(758, 377)
-
-[node name="Enemy2" parent="Foreground/Characters" instance=ExtResource("3_x50u0")]
-position = Vector2(853, 409)
-
-[node name="Enemy3" parent="Foreground/Characters" instance=ExtResource("3_x50u0")]
-position = Vector2(881, 303)
-
-[node name="Enemy4" parent="Foreground/Characters" instance=ExtResource("3_x50u0")]
-position = Vector2(1066, 496)
