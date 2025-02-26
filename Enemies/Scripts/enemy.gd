@@ -3,27 +3,40 @@ extends CharacterBody2D
 var health = 3
 var direction = Vector2.ZERO
 var random_direction = Vector2.ZERO  # Stores a random movement direction
-var attack_range = 32  # Distance at which the enemy attacks
+var attack_range = 16  # Distance at which the enemy attacks
 var attack_timer = 0.0  # Timer to prevent attack spam
 @export var attack_cooldown = 1.5  # Time between attacks
 @export var random_change_interval = 1.5  # Time between random movement changes
 @export var spawn_offset = Vector2(30,0)
 
 @onready var player = get_node("/root/Game/Foreground/Characters/Player")
+@onready var notifier = $VisibleOnScreenNotifier2D  # Ensure this node exists in the scene
 
 var random_timer = 0.0  # Timer for changing random movement
+var tracking = false  # Enemy will only track when visible
 
 func _ready():
 	randomize()  # Ensures different enemies get different behavior
 	pick_random_direction()  # Set an initial random movement
+
+	# Connect visibility signals
+	if notifier:
+		notifier.screen_entered.connect(_on_screen_entered)
+		notifier.screen_exited.connect(_on_screen_exited)
+
+func _on_screen_entered():
+	tracking = true  # Start tracking the player when on screen
+
+func _on_screen_exited():
+	tracking = false  # Stop tracking the player when off screen
 
 func _physics_process(delta):
 	# Update attack cooldown
 	if attack_timer > 0:
 		attack_timer -= delta
 
-	# Ensure player exists before proceeding
-	if player:
+	# Only track the player if visible
+	if tracking and player:
 		var direction_to_player = global_position.direction_to(player.global_position)
 
 		# Change random movement direction at set intervals
@@ -82,8 +95,6 @@ func attack():
 
 		# Set the attack's velocity toward the player (if it's a moving attack)
 		attack.velocity = attack_direction * 100  # Adjust speed as needed
-
-
 
 func take_damage():
 	health -= 1

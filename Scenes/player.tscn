@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3sxw28ls5s5r"]
+[gd_scene load_steps=13 format=3 uid="uid://d3sxw28ls5s5r"]
 
 [ext_resource type="Script" path="res://Player/Character/Scripts/player.gd" id="1_4j40p"]
-[ext_resource type="Texture2D" uid="uid://dfhwbcc1xgo68" path="res://Player/Character/Assets/Player.png" id="2_m7ebh"]
+[ext_resource type="Texture2D" uid="uid://15f2vm8q14lx" path="res://Player/Character/Assets/Idle Down.png" id="2_ro67y"]
+[ext_resource type="Texture2D" uid="uid://cfno4d67oto23" path="res://Player/Character/Assets/Walk Down.png" id="3_shbk6"]
+[ext_resource type="Texture2D" uid="uid://0gp8hfqgsrwq" path="res://Player/Character/Assets/Idle Left.png" id="4_k0ac2"]
+[ext_resource type="Texture2D" uid="uid://csvg77sjy3iho" path="res://Player/Character/Assets/Walk Left.png" id="5_vnda3"]
+[ext_resource type="Texture2D" uid="uid://d2px2sw3jxdwn" path="res://Player/Character/Assets/Idle Right.png" id="6_ilfac"]
+[ext_resource type="Texture2D" uid="uid://bfepqon0q1pb0" path="res://Player/Character/Assets/Walk Right.png" id="7_n5mrx"]
+[ext_resource type="Texture2D" uid="uid://cxirwstgjo8dj" path="res://Player/Character/Assets/Idle Up.png" id="8_u8o6s"]
+[ext_resource type="Texture2D" uid="uid://b672i63lvfuhc" path="res://Player/Character/Assets/Walk Up.png" id="9_4lcmw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkikd"]
 size = Vector2(16, 16)
@@ -9,13 +16,60 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnkkc"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vj77"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ro67y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_shbk6")
+}],
+"loop": true,
+"name": &"Walk D",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k0ac2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vnda3")
+}],
+"loop": true,
+"name": &"Walk L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ilfac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n5mrx")
+}],
+"loop": true,
+"name": &"Walk R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_u8o6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4lcmw")
+}],
+"loop": true,
+"name": &"Walk U",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(1, 0)
 script = ExtResource("1_4j40p")
 
 [node name="Character" type="Sprite2D" parent="."]
 position = Vector2(-1, -8)
-texture = ExtResource("2_m7ebh")
+texture = ExtResource("2_ro67y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -8)
@@ -33,5 +87,15 @@ debug_color = Color(0.995776, 0, 0.199186, 0.42)
 [node name="Marker2D" type="Marker2D" parent="Fireball"]
 unique_name_in_owner = true
 position = Vector2(11, -8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(5, 5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -8)
+sprite_frames = SubResource("SpriteFrames_3vj77")
+animation = &"Walk D"
+frame_progress = 0.763883
 
 [connection signal="health_depleted" from="." to="." method="_on_health_depleted"]

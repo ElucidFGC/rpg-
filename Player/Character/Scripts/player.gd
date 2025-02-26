@@ -3,9 +3,9 @@ extends CharacterBody2D
 signal health_depleted
 
 var health = 3
-const MARKER_OFFSET = 50
+const MARKER_OFFSET = 16
 const FireballScene = preload("res://Scenes/Fireball.tscn")
-const SPEED = 200
+const SPEED = 100
 const SHOOT_COOLDOWN = 0.5  # Cooldown period (in seconds)
 
 var last_direction = Vector2.RIGHT  # Default direction
@@ -13,9 +13,11 @@ var can_shoot = true
 
 func _physics_process(delta):
 	var input_dir = Vector2.ZERO  
+	
 
 	if Input.is_action_pressed("move_left"):
 		input_dir = Vector2.LEFT 
+		
 	elif Input.is_action_pressed("move_right"):
 		input_dir = Vector2.RIGHT 
 	elif Input.is_action_pressed("move_up"):
@@ -45,7 +47,6 @@ func _physics_process(delta):
 		var timer = get_tree().create_timer(SHOOT_COOLDOWN)
 		await timer.timeout  # Await the timeout signal from the timer
 		can_shoot = true
-
 
 func player_damage():
 	health -= 0.5

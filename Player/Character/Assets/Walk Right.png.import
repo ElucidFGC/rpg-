@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ofwp3w7c5xn2"
-path="res://.godot/imported/Fireball.png-d1efe563f08a70bc0107369fb1acea96.ctex"
+uid="uid://bfepqon0q1pb0"
+path="res://.godot/imported/Walk Right.png-4bfce92be6f96d8b904a23833d2c1322.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Spells/Fireball.png"
-dest_files=["res://.godot/imported/Fireball.png-d1efe563f08a70bc0107369fb1acea96.ctex"]
+source_file="res://Player/Character/Assets/Walk Right.png"
+dest_files=["res://.godot/imported/Walk Right.png-4bfce92be6f96d8b904a23833d2c1322.ctex"]
 
 [params]
 

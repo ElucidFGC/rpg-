@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0podbaytuhsy"]
+
+[ext_resource type="Texture2D" uid="uid://15f2vm8q14lx" path="res://Player/Character/Assets/Idle Down.png" id="1_0q8s1"]
+[ext_resource type="Texture2D" uid="uid://cfno4d67oto23" path="res://Player/Character/Assets/Walk Down.png" id="2_o8b6h"]
+
+[sub_resource type="Animation" id="Animation_fxtng"]
+resource_name = "Walk_Down"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywpb2"]
+_data = {
+"Walk_Down": SubResource("Animation_fxtng")
+}
+
+[node name="Link" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ywpb2")
+}
+
+[node name="IdleDown" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("1_0q8s1")
+
+[node name="WalkDown" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("2_o8b6h")

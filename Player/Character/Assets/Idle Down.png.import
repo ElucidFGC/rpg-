@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ofwp3w7c5xn2"
-path="res://.godot/imported/Fireball.png-d1efe563f08a70bc0107369fb1acea96.ctex"
+uid="uid://15f2vm8q14lx"
+path="res://.godot/imported/Idle Down.png-c0201a70ee2bcd4dd215e71e20865bfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Spells/Fireball.png"
-dest_files=["res://.godot/imported/Fireball.png-d1efe563f08a70bc0107369fb1acea96.ctex"]
+source_file="res://Player/Character/Assets/Idle Down.png"
+dest_files=["res://.godot/imported/Idle Down.png-c0201a70ee2bcd4dd215e71e20865bfd.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4r2v6yrnk0xu"]
 
 [ext_resource type="Script" path="res://Player/Character/Scripts/fireball.gd" id="1_3fhoh"]
-[ext_resource type="Texture2D" uid="uid://cdhmvefhc41dy" path="res://Player/Spells/Fireball.png" id="2_6vv6n"]
+[ext_resource type="Texture2D" uid="uid://ofwp3w7c5xn2" path="res://Player/Spells/Fireball.png" id="2_6vv6n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iixxv"]
 size = Vector2(16, 16)
