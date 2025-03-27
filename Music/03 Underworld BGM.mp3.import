@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvv5wdl51xde2"
+path="res://.godot/imported/03 Underworld BGM.mp3-c67e9e17e8671c8b40c405bbdc2ae7e3.mp3str"
+
+[deps]
+
+source_file="res://Music/03 Underworld BGM.mp3"
+dest_files=["res://.godot/imported/03 Underworld BGM.mp3-c67e9e17e8671c8b40c405bbdc2ae7e3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

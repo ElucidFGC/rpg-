@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blrn71xfyre68"
+path="res://.godot/imported/06 Sword.mp3-4ee72db55ee7815af62629fd2ab0e031.mp3str"
+
+[deps]
+
+source_file="res://Music/06 Sword.mp3"
+dest_files=["res://.godot/imported/06 Sword.mp3-4ee72db55ee7815af62629fd2ab0e031.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

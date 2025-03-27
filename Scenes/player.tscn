@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d3sxw28ls5s5r"]
 
-[ext_resource type="Script" path="res://Player/Character/Scripts/player.gd" id="1_4j40p"]
+[ext_resource type="Script" uid="uid://do6x746hahqdr" path="res://Player/Character/Scripts/player.gd" id="1_4j40p"]
 [ext_resource type="Texture2D" uid="uid://15f2vm8q14lx" path="res://Player/Character/Assets/Idle Down.png" id="2_ro67y"]
 [ext_resource type="Texture2D" uid="uid://cfno4d67oto23" path="res://Player/Character/Assets/Walk Down.png" id="3_shbk6"]
 [ext_resource type="Texture2D" uid="uid://0gp8hfqgsrwq" path="res://Player/Character/Assets/Idle Left.png" id="4_k0ac2"]
@@ -95,7 +95,8 @@ zoom = Vector2(5, 5)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -8)
 sprite_frames = SubResource("SpriteFrames_3vj77")
-animation = &"Walk D"
-frame_progress = 0.763883
+animation = &"Walk U"
+frame = 1
+frame_progress = 0.248258
 
 [connection signal="health_depleted" from="." to="." method="_on_health_depleted"]

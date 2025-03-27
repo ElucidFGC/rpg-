@@ -4,26 +4,32 @@ signal health_depleted
 
 var health = 3
 const MARKER_OFFSET = 16
-const FireballScene = preload("res://Scenes/Fireball.tscn")
+const FireballScene = preload("res://Scenes/fireball.tscn")
 const SPEED = 100
 const SHOOT_COOLDOWN = 0.5  # Cooldown period (in seconds)
 
 var last_direction = Vector2.RIGHT  # Default direction
 var can_shoot = true
 
+@onready var anim_player = $AnimatedSprite2D  # Ensure this node exists in your scene
+
 func _physics_process(delta):
 	var input_dir = Vector2.ZERO  
-	
 
 	if Input.is_action_pressed("move_left"):
 		input_dir = Vector2.LEFT 
-		
+		anim_player.play("Walk L")
 	elif Input.is_action_pressed("move_right"):
 		input_dir = Vector2.RIGHT 
+		anim_player.play("Walk R")
 	elif Input.is_action_pressed("move_up"):
 		input_dir = Vector2.UP
+		anim_player.play("Walk U")
 	elif Input.is_action_pressed("move_down"):
 		input_dir = Vector2.DOWN
+		anim_player.play("Walk D")
+	else:
+		anim_player.stop()  # Stop the animation if no input is detected
 
 	# Update last direction if moving
 	if input_dir != Vector2.ZERO:
@@ -51,4 +57,4 @@ func _physics_process(delta):
 func player_damage():
 	health -= 0.5
 	if health <= 0.0:
-			health_depleted.emit()
+		health_depleted.emit()

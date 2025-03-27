@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4f701m0nyigi"]
+
+[ext_resource type="Script" uid="uid://b1ptft5863sjc" path="res://mini_boss.gd" id="1_c7kbc"]
+[ext_resource type="Texture2D" uid="uid://mperkhnwdasd" path="res://Enemies/Boss/MiniBoss.png" id="2_dj6n3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojoga"]
+size = Vector2(15, 16)
+
+[node name="MiniBoss" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_c7kbc")
+
+[node name="MiniBoss" type="Sprite2D" parent="."]
+position = Vector2(2, -8)
+texture = ExtResource("2_dj6n3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -8)
+shape = SubResource("RectangleShape2D_ojoga")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.5, -8)
+scale = Vector2(0.75, 0.8)
+
+[node name="swordtoss" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="swordtoss"]
+position = Vector2(16, -8)

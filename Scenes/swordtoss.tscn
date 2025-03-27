@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://wwrrjmxcwxto"]
+
+[ext_resource type="Script" uid="uid://dxmeckad67cmc" path="res://Scenes/swordtoss.gd" id="1_4jx8b"]
+[ext_resource type="Texture2D" uid="uid://djgm84bkms2ll" path="res://Enemies/Boss/SwordToss.png" id="2_3v5ge"]
+[ext_resource type="AudioStream" uid="uid://blrn71xfyre68" path="res://Music/06 Sword.mp3" id="3_qj210"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iixxv"]
+size = Vector2(8, 16)
+
+[node name="swordtoss" type="Area2D"]
+light_mask = 0
+visibility_layer = 2
+script = ExtResource("1_4jx8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_iixxv")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="SwordToss" type="Sprite2D" parent="Marker2D"]
+position = Vector2(0, -8)
+texture = ExtResource("2_3v5ge")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.4, 0.8)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qj210")
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

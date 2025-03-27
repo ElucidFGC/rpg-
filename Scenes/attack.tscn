@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://frmd5jobuect"]
+[gd_scene load_steps=5 format=3 uid="uid://frmd5jobuect"]
 
-[ext_resource type="Texture2D" uid="uid://d3j3qnixyp5rw" path="res://Player/Spells/Attack.png" id="1_0v56r"]
-[ext_resource type="Script" path="res://Enemies/Scripts/attack.gd" id="1_prpmq"]
+[ext_resource type="Script" uid="uid://b5d5mecbwtnvv" path="res://Enemies/Scripts/attack.gd" id="1_prpmq"]
+[ext_resource type="Texture2D" uid="uid://ofwp3w7c5xn2" path="res://Player/Spells/Fireball.png" id="2_f6kki"]
+[ext_resource type="AudioStream" uid="uid://bryw1xfmc75ln" path="res://Music/10 Fireball.mp3" id="3_uvg5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iixxv"]
 size = Vector2(16, 16)
@@ -16,9 +17,14 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_iixxv")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 1)
 
-[node name="Attack" type="Sprite2D" parent="Marker2D"]
-position = Vector2(0, -8)
-texture = ExtResource("1_0v56r")
+[node name="Fireball" type="Sprite2D" parent="Marker2D"]
+position = Vector2(0, -9)
+texture = ExtResource("2_f6kki")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_uvg5y")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

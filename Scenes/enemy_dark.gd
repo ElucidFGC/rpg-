@@ -3,7 +3,7 @@ extends CharacterBody2D
 var health = 3
 var direction = Vector2.ZERO
 var random_direction = Vector2.ZERO  # Stores a random movement direction
-var attack_range = 16  # Distance at which the enemy attacks
+var attack_range = 80  # Distance at which the enemy attacks
 var attack_timer = 0.0  # Timer to prevent attack spam
 @export var attack_cooldown = 1.5  # Time between attacks
 @export var random_change_interval = 1.5  # Time between random movement changes
@@ -93,24 +93,25 @@ func change_direction(new_direction: Vector2):
 		direction = Vector2(0, sign(new_direction.y))
 
 func attack():
-	if attack_timer <= 0:
-		attack_timer = attack_cooldown  # Reset the attack timer
-		
-		if not player:
-			return
-			
-		# Use the direction the enemy is facing for the attack
-		var attack_direction = direction  # Attack in the direction the enemy is facing
+	if attack_timer > 0:
+		return  # Prevent attack spam
 
-		# Instantiate the attack
-		var attack = preload("res://Scenes/attack.tscn").instantiate()
-		get_parent().add_child(attack)  # Add the attack to the scene tree
-		
-		# Position the attack in front of the enemy in the cardinal direction
-		attack.position = global_position + (attack_direction * spawn_offset.length())  # Spawn in front of the enemy
+	if not player:
+		return  # Ensure player exists before attacking
 
-		# Set the attack's velocity toward the player (if it's a moving attack)
-		attack.velocity = attack_direction * 1  # Adjust speed as needed
+	# Determine direction to the player
+	var direction_to_player = global_position.direction_to(player.global_position)
+
+	# Check if the enemy is facing the player
+	if direction.dot(direction_to_player) > 0.7:  # Higher than 0.7 means similar direction
+		attack_timer = attack_cooldown  # Reset cooldown
+
+		# Instantiate and set fireball direction
+		var attack = preload("res://Scenes/enemyfireball.tscn").instantiate()
+		get_parent().add_child(attack)
+		attack.global_position = global_position + (direction * spawn_offset.length())
+		attack.direction = direction  # Set direction before _ready()
+
 
 func take_damage():
 	health -= 1

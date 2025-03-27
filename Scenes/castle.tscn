@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=4 uid="uid://by5xony04c122"]
+
+[ext_resource type="Script" path="res://Scenes/castle.gd" id="1_wyyty"]
+[ext_resource type="PackedScene" uid="uid://bqc8qfgbihel2" path="res://Scenes/teleport.tscn" id="2_a8e4t"]
+[ext_resource type="TileSet" uid="uid://ct21i4fkcip81" path="res://Castle.tres" id="5_jyhsm"]
+[ext_resource type="PackedScene" uid="uid://d3sxw28ls5s5r" path="res://Scenes/player.tscn" id="6_spq35"]
+
+[node name="Castle" type="Node2D"]
+script = ExtResource("1_wyyty")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="GameOver" type="CanvasLayer" parent="Background"]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Background/GameOver"]
+offset_right = 1152.0
+offset_bottom = 651.0
+color = Color(1, 1, 1, 0.47451)
+
+[node name="Label" type="Label" parent="Background/GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 220.0
+offset_right = 990.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0.266575, 0.266575, 0.266575, 1)
+theme_override_font_sizes/font_size = 150
+text = "Game Over"
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Teleporter" type="Node2D" parent="Foreground"]
+
+[node name="Teleport" parent="Foreground/Teleporter" instance=ExtResource("2_a8e4t")]
+visible = false
+position = Vector2(679, 169)
+
+[node name="CollisionShape2D" parent="Foreground/Teleporter/Teleport" index="0"]
+position = Vector2(1, -1)
+
+[node name="DestinationPoint" parent="Foreground/Teleporter/Teleport" index="1"]
+position = Vector2(297, 46)
+
+[node name="Castle" type="TileMapLayer" parent="Foreground"]
+tile_map_data = PackedByteArray("AAABAAEAAQAFAAMAAAABAAIAAQAFAAMAAAABAAMAAQAFAAMAAAABAAQAAQAFAAMAAAABAAUAAQAFAAMAAAABAAYAAQAFAAMAAAABAAcAAQAFAAMAAAACAAEAAQAFAAMAAAACAAIAAQAFAAMAAAACAAMAAQAFAAMAAAACAAQAAQAFAAMAAAACAAUAAQAFAAMAAAACAAYAAQAFAAMAAAACAAcAAQAFAAMAAAADAAEAAQAFAAMAAAADAAIAAQAFAAMAAAADAAMAAQAFAAMAAAADAAQAAQAFAAMAAAADAAUAAQAFAAMAAAADAAYAAQAFAAMAAAADAAcAAQAFAAMAAAAEAAEAAQAFAAMAAAAEAAIAAQAFAAMAAAAEAAMAAQAFAAMAAAAEAAQAAQAFAAMAAAAEAAUAAQAFAAMAAAAEAAYAAQAFAAMAAAAEAAcAAQAFAAMAAAAFAAEAAQAFAAMAAAAFAAIAAQAFAAMAAAAFAAMAAQAFAAQAAAAFAAQAAQAFAAMAAAAFAAUAAQAFAAMAAAAFAAYAAQAFAAQAAAAFAAcAAQAFAAMAAAAGAAEAAQAFAAMAAAAGAAIAAQAFAAMAAAAGAAMAAQAFAAMAAAAGAAQAAQAFAAMAAAAGAAUAAQAFAAMAAAAGAAYAAQAFAAMAAAAGAAcAAQAFAAMAAAAHAAEAAQAFAAMAAAAHAAIAAQAFAAMAAAAHAAMAAQAFAAMAAAAHAAQAAQAFAAMAAAAHAAUAAQAFAAMAAAAHAAYAAQAFAAMAAAAHAAcAAQAFAAMAAAAIAAEAAQAFAAMAAAAIAAIAAQAFAAMAAAAIAAMAAQAFAAMAAAAIAAQAAQAFAAMAAAAIAAUAAQAFAAMAAAAIAAYAAQAFAAMAAAAIAAcAAQAFAAMAAAAJAAEAAQAFAAMAAAAJAAIAAQAFAAMAAAAJAAMAAQAFAAUAAAAJAAQAAQAFAAMAAAAJAAUAAQAFAAMAAAAJAAYAAQAFAAUAAAAJAAcAAQAFAAMAAAAKAAEAAQAFAAMAAAAKAAIAAQAFAAMAAAAKAAMAAQAFAAMAAAAKAAQAAQAFAAMAAAAKAAUAAQAFAAMAAAAKAAYAAQAFAAMAAAAKAAcAAQAFAAMAAAALAAEAAQAFAAMAAAALAAIAAQAFAAMAAAALAAMAAQAFAAMAAAALAAQAAQAFAAMAAAALAAUAAQAFAAMAAAALAAYAAQAFAAMAAAALAAcAAQAFAAMAAAAMAAEAAQAFAAMAAAAMAAIAAQAFAAMAAAAMAAMAAQAFAAMAAAAMAAQAAQAFAAMAAAAMAAUAAQAFAAMAAAAMAAYAAQAFAAMAAAAMAAcAAQAFAAMAAAANAAEAAQAFAAMAAAANAAIAAQAFAAMAAAANAAMAAQAFAAMAAAANAAQAAQAFAAMAAAANAAUAAQAFAAMAAAANAAYAAQAFAAMAAAANAAcAAQAFAAMAAAA=")
+tile_set = ExtResource("5_jyhsm")
+
+[node name="Characters" type="Node2D" parent="Foreground"]
+
+[node name="Player" parent="Foreground/Characters" groups=["Player"] instance=ExtResource("6_spq35")]
+position = Vector2(119, 76)
+
+[editable path="Foreground/Teleporter/Teleport"]

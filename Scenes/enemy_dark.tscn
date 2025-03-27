@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://bsekfh2nrucs1"]
+
+[ext_resource type="Script" uid="uid://dhxxcluc8w3p8" path="res://Scenes/enemy_dark.gd" id="1_ecj77"]
+[ext_resource type="PackedScene" uid="uid://dd3silp1jhi8i" path="res://Scenes/enemyfireball.tscn" id="2_2jdm1"]
+[ext_resource type="Texture2D" uid="uid://sdakgcp2013t" path="res://Enemies/Basic Enemy/Enemy Idle.png" id="2_wiab2"]
+[ext_resource type="Texture2D" uid="uid://btymuc27ofkr8" path="res://Enemies/Basic Enemy/Movement/Enemy Down.png" id="4_4hmly"]
+[ext_resource type="Texture2D" uid="uid://csgrji0mjmcve" path="res://Enemies/Basic Enemy/Movement/Enemy Down 2.png" id="5_mvda5"]
+[ext_resource type="Texture2D" uid="uid://6s65ivmsjohu" path="res://Enemies/Basic Enemy/Movement/Enemy Left.png" id="6_c5iw2"]
+[ext_resource type="Texture2D" uid="uid://d00bdp6ggc505" path="res://Enemies/Basic Enemy/Movement/Enemy Left 2.png" id="7_x3348"]
+[ext_resource type="Texture2D" uid="uid://ear5xjx3qftm" path="res://Enemies/Basic Enemy/Movement/Enemy Right.png" id="8_yltgn"]
+[ext_resource type="Texture2D" uid="uid://4pqel156rd0m" path="res://Enemies/Basic Enemy/Movement/Enemy Right 2.png" id="9_jifaq"]
+[ext_resource type="Texture2D" uid="uid://cdsul7rfveepl" path="res://Enemies/Basic Enemy/Movement/Enemy Up.png" id="10_75nie"]
+[ext_resource type="Texture2D" uid="uid://cniotj40mlu2k" path="res://Enemies/Basic Enemy/Movement/Enemy Up 2.png" id="11_oxt2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bf4fg"]
+size = Vector2(14, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp4jm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4hmly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mvda5")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_c5iw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x3348")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_yltgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jifaq")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_75nie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_oxt2u")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+visibility_layer = 3
+script = ExtResource("1_ecj77")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_wiab2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_bf4fg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-3.8743e-07, -8)
+scale = Vector2(0.7, 0.8)
+
+[node name="enemyfireball" parent="." instance=ExtResource("2_2jdm1")]
+position = Vector2(18, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_hp4jm")
+animation = &"Up"
+frame_progress = 0.098784
