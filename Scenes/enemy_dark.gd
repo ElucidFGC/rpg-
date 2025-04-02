@@ -117,4 +117,11 @@ func take_damage():
 	health -= 1
 
 	if health <= 0:
+		drop_health_pickup()  # Call the function to drop an item
 		queue_free()
+
+func drop_health_pickup():
+	if randi_range(0, 1) == 1:  # 50% chance (0 or 1)
+		var health_pickup = preload("res://Scenes/health_pickup.tscn").instantiate()
+		health_pickup.global_position = global_position  # Drop at enemy position
+		get_parent().add_child(health_pickup)  # Add to the scene

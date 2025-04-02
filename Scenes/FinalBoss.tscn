@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://b181sairl8pts"]
+
+[ext_resource type="Script" uid="uid://c3homl0vfim2r" path="res://Scenes/final_boss.gd" id="1_l1wrf"]
+[ext_resource type="Texture2D" uid="uid://by174tno2pywj" path="res://Enemies/Boss/FinalBoss/Down1.png" id="2_l1wrf"]
+[ext_resource type="Texture2D" uid="uid://dbf5ydphrb2p" path="res://Enemies/Boss/FinalBoss/Down2.png" id="3_cjavg"]
+[ext_resource type="Texture2D" uid="uid://d1ptu8p3jq1o1" path="res://Enemies/Boss/FinalBoss/Left1.png" id="4_xpydy"]
+[ext_resource type="Texture2D" uid="uid://dgc2affcf0vdv" path="res://Enemies/Boss/FinalBoss/Left2.png" id="5_ue0gs"]
+[ext_resource type="Texture2D" uid="uid://i8ffemn4bqhj" path="res://Enemies/Boss/FinalBoss/Right1.png" id="6_p57g7"]
+[ext_resource type="Texture2D" uid="uid://bkxikj7ynxcer" path="res://Enemies/Boss/FinalBoss/Right2.png" id="7_ytbyp"]
+[ext_resource type="Texture2D" uid="uid://biy7uhdaa6nd4" path="res://Enemies/Boss/FinalBoss/Up1.png" id="8_0l6e4"]
+[ext_resource type="Texture2D" uid="uid://bvyxsadhbmrb" path="res://Enemies/Boss/FinalBoss/Up2.png" id="9_pdpcu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojoga"]
+size = Vector2(16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fry7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l1wrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cjavg")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xpydy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ue0gs")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_p57g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ytbyp")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_0l6e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pdpcu")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[node name="FinalBoss" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_l1wrf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_ojoga")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, -8)
+scale = Vector2(0.8, 0.8)
+
+[node name="swordtoss" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="swordtoss"]
+position = Vector2(16, -8)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -8)
+sprite_frames = SubResource("SpriteFrames_5fry7")
+animation = &"Up"
+
+[node name="DamageResetTimer" type="Timer" parent="."]
+one_shot = true

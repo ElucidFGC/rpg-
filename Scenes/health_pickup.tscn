@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciswon8y0ftip"]
+
+[ext_resource type="Texture2D" uid="uid://c70osiofx5dku" path="res://HUD/hud_heartFull.png" id="1_gvws8"]
+[ext_resource type="Script" uid="uid://j76sk6sl6u1n" path="res://Scenes/health_pickup.gd" id="1_lj2jr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj2jr"]
+size = Vector2(28, 24)
+
+[node name="HealthPickup" type="Area2D"]
+script = ExtResource("1_lj2jr")
+
+[node name="HudHeartFull" type="Sprite2D" parent="."]
+position = Vector2(0.65, 0.25)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_gvws8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.65, 0.25)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_lj2jr")

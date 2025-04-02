@@ -17,9 +17,8 @@ var attack_timer = 0.0  # Timer to prevent attack spam
 @onready var notifier = $VisibleOnScreenNotifier2D  # Ensure this node exists in the scene
 @onready var marker = $swordtoss/Marker2D  # Ensure this marker exists in the scene
 
-const swordtossScene = preload("res://Scenes/swordtoss.tscn")
 const HealthPickupScene = preload("res://Scenes/Health_Pickup.tscn")  # Adjust path if needed
-
+const swordtossScene = preload("res://Scenes/swordtoss.tscn")
 
 var random_timer = 0.0  # Timer for changing random movement
 var tracking = false  # Enemy will only track when visible

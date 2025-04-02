@@ -4,6 +4,7 @@ extends Area2D
 var direction = Vector2.ZERO  # Direction of travel
 
 func _ready():
+	get_tree().create_timer(1.0).timeout.connect(queue_free)  # Destroy after 3 sec
 	if direction == Vector2.ZERO:
 		direction = Vector2.RIGHT  # Default direction
 	rotation = direction.angle()

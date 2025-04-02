@@ -11,6 +11,7 @@ const SHOOT_COOLDOWN = 0.5  # Cooldown period (in seconds)
 var last_direction = Vector2.RIGHT  # Default direction
 var can_shoot = true
 
+@onready var health_ui = $Camera2D/HealthBar  # Get reference to your health UI
 @onready var anim_player = $AnimatedSprite2D  # Ensure this node exists in your scene
 
 func _physics_process(delta):
@@ -55,6 +56,15 @@ func _physics_process(delta):
 		can_shoot = true
 
 func player_damage():
-	health -= 0.5
+	health -= 0.5  # Debugging
+	if health_ui:
+		health_ui.update_health(health)  # Update UI when taking damage
 	if health <= 0.0:
 		health_depleted.emit()
+
+
+func restore_health():
+	if health < 3:  # Cap health at 3
+		health += 1
+		if health_ui:
+			health_ui.update_health(health)  # Update UI
